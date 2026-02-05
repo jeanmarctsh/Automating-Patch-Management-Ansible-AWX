@@ -1,4 +1,4 @@
-# 🚀 PROJET : AUTOMATISATION DU PATCH MANAGEMENT AVEC AWX ET ANSIBLE
+# 🚀 Projet: PATCH MANAGEMENT AVEC AWX ET ANSIBLE
 
 __🔄 Etant dans un monde technologique en constante évolution, ce projet reste ouvert à l'ajout de nouvelles fonctionnalités, en fonction de l'évolution  des besoins__
 
@@ -6,7 +6,7 @@ __🔄 Etant dans un monde technologique en constante évolution, ce projet rest
 
 ## SOMMAIRE
 
-- [🚀 PROJET : AUTOMATISATION DU PATCH MANAGEMENT AVEC AWX ET ANSIBLE](#-projet--automatisation-du-patch-management-avec-awx-et-ansible)
+- [🚀 Projet: PATCH MANAGEMENT AVEC AWX ET ANSIBLE](#-projet-patch-management-avec-awx-et-ansible)
   - [SOMMAIRE](#sommaire)
   - [📝 INTRODUCTION](#-introduction)
   - [🌟 WORKFLOW DU PROJET](#-workflow-du-projet)
