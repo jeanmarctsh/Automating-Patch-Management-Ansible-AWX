@@ -71,7 +71,7 @@ Dans le cadre de l'interface d'acceuil d'awx il y en a deux:
 
 * Action d'un administrateur général sur AWX
 
-  ![Action d'un administrateur](inventory.PNG)
+  ![Dashboard AWX](Interface_d'acceuil_AWX.PNG)
 
 * Interface d'acceuil avec connexion du l'utilisateur LDAP
 
