@@ -4,12 +4,13 @@ __🔄 Etant dans un monde technologique en constante évolution, ce projet rest
 
 ---
 
-## SOMMAIRE
+## 📍 SOMMAIRE
 
 - [🚀 Projet: PATCH MANAGEMENT AVEC AWX ET ANSIBLE](#-projet-patch-management-avec-awx-et-ansible)
-  - [SOMMAIRE](#sommaire)
-  - [📝 INTRODUCTION](#-introduction)
+  - [📍 SOMMAIRE](#-sommaire)
+  - [📝 OBJECTIF](#-objectif)
   - [🌟 WORKFLOW DU PROJET](#-workflow-du-projet)
+  - [STRUCTURE GENERALE DU PROJET](#structure-generale-du-projet)
   - [🌐🖧 ARCHITECTURE PHYSIQUE DU PROJET](#-architecture-physique-du-projet)
   - [⚙️ MECANISME DE FONCTIONNEMENT DU PROJET](#️-mecanisme-de-fonctionnement-du-projet)
   - [🧰 OUTILS ET TECHNOLOGIES UTILISES](#-outils-et-technologies-utilises)
@@ -17,37 +18,53 @@ __🔄 Etant dans un monde technologique en constante évolution, ce projet rest
 
 ---
 
-## 📝 INTRODUCTION
+## 📝 OBJECTIF
 
-De nos jours, gérer un système informatique en toute sécurité n’a jamais été une tâche facile. Cela implique la mise en oeuvre de plusieurs mécanismes visant à limiter les risques de compromission du système existant. Il est donc essentiel et nécessaire de nos jours qu’une équipe IT maîtrise ces mécanismes afin non seulement d’assurer la sécurité des systèmes, mais aussi d’améliorer la productivité et de réduire la complexité liée aux déploiements massifs ou aux simples mises à niveau.
-
-Le choix des outils dépend toujours des besoins rencontrés en entreprise. Dans le monde IT actuel, on observe une forte évolution dans des domaines tels que la sécurité, le cloud, la gestion des ressources (physiques ou virtuelles) ainsi que celui de l'automatisation. 
-Automatiser est une bonne pratique, mais il est encore plus important de savoir précisément quoi automatiser afin de réduire les erreurs humaines.
-
-Ce projet consiste à mettre en place une solution de gestion centralisée basée sur Ansible et AWX. Cette solution permettra d’avoir une vision globale de différents correctifs (paquets, images, etc.) et d’effectuer des mises à niveau de manière plus sécurisée, contrôlée et planifiée. Pour mener à bien ce projet, nous adopterons plusieurs notions clés telles que la sécurité (locale et utilisateur), l’automatisation, la synchronisation, le versioning et la planification.
+Ce projet consiste à mettre en place une solution de gestion centralisée basée sur Ansible et AWX. Cette solution permet d’avoir une vision globale de différents correctifs (paquets, images, etc.) et d’effectuer des mises à niveau de manière plus sécurisée, contrôlée et planifiée. 
+__Eléments clés : Sécurité (locale et utilisateur), l’automatisation, la synchronisation, le versioning et la planification.__
 
 ---
 
 ## 🌟 WORKFLOW DU PROJET
 
-Compte tenu de la charge du travail, il serait plus judicieux de travailler avec un ordinateur ayant suffisamment des ressources en RAM (suite à la charge du travail qui augmente progressivement) et un bon stockage. De préférence un disque de type SSD supérieur ou égal  1TO.
-
 Voici le workflow général de notre projet:
 
 ![Schéma du Workflow](Images/WORKFLOW_GENERAL/WORKFLOW_GEN.png)
 
-
 ---
 
+## STRUCTURE GENERALE DU PROJET 
 
+```text
+VERSION_FINALE/                 
+├── Configuration/              
+|   ├── ansible/                # Configuration de différents playbooks
+|   ├── Awx_Kubernetes/        ├# Installation et configuration AWX-OPERATOR via minikube
+|   ├── clients/                # Configuration de différentes machines clientes
+|   ├── Gitea_docker/           # Installation via docker-compose du serveur Gitea pour le versionning
+|   ├── Grafana_prometheus/     # Installation et supervision du parc local
+|   ├── nginx/                  # Installation et configuration de nginx comme reverse proxy
+|   ├── référentiel_local/      # Conception d'un dépôt local HTTP linux
+|   └── windows_server/         # Installation AD et configuration des utilisateurs dédiés pour une connexion LDAD dans AWX
+├── Demo/                       # Démonstration vidéo de différentes étapes (installation, désinstallation des paquets dans AWX)
+├── Images/                     # Différentes captures du projet(syntaxe, code http, workflow, etc... )
+├── Rapport_final/              # Documentation complète du projet (DAT)
+└── README.md                   # Documentation principale du projet
+
+```
 
 ## 🌐🖧 ARCHITECTURE PHYSIQUE DU PROJET
 
-le projet comprend : 4 Serveurs Linux, 1 Serveur Windows et 2 machines clientes.
+le projet comprend : 4 Serveurs Linux, 1 Serveur Windows et 2 machines clientes. 
+
+* Configuration matérielle recommandée :
+  
+  1. Disque : SSD (recommandé pour la réactivité du cluster Kubernetes/AWX).
+  2. RAM : 16 Go minimum (pour supporter l'ensemble des VMs et le cluster Minikube installé)
 
 * Serveur Linux
   
-  1. Linux : Pour le serveur AWX
+  1. Linux : Pour le serveur AWX 
   2. Linux : Pour le serveur Gitea
   3. Linux : Pour le référentiel local
   4. Linux : Pour Ansible
@@ -70,14 +87,13 @@ le projet comprend : 4 Serveurs Linux, 1 Serveur Windows et 2 machines clientes.
 
 - Pour le serveur Gitea : il sera utilisé pour le versioning de nos différents fichiers de configuration et sera intégré à AWX pour une bonne synchronisation.
 
-- Pour le serveur Ansible : il sera utilisé comme zone neutre en fonction des caractéristiques de la machine hôte  et partagera le fichier complet au serveur Gitea.
+- Pour le serveur ansible: Sert d'environnement de développement pour tester les configurations avant de les pousser (Push) vers Gitea pour l'intégration finale.
 
 - Pour le référentiel local : il permettra aux machines clientes d'effectuer une mise à niveau de manière sécurisée et contrôlée.
 
 - Pour le serveur Windows 2019 : il permettra une authentification sécurisée afin d'intégrer l'utilisateur de service de l'Active Directory à AWX via le protocol LDAP.
 
 - Pour les machines clientes : elles seront intégrées à AWX et via un utilisateur de service créé au niveau de ces dernières, les différentes configurations seront appliquées et les mises à jour ne se feront en local via le référentiel local déployé avec reprepro
-
 
 ---
 
@@ -108,7 +124,6 @@ le projet comprend : 4 Serveurs Linux, 1 Serveur Windows et 2 machines clientes.
   | 11 | Rsync                                                                  | Pour le transfert de différents fichiers en local | 
   | 12 | LDAP                                                                   | Pour permettre la liaison entre un utilisateur (de service) de l'AD dans AWX |
   | 13 | Hyperviseur de type 2 (Vmware_workstation)                             | Construction et virtualisation de  l'architecture du projet |
-
     
 ---
 
