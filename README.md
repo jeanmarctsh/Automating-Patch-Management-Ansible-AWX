@@ -1,8 +1,6 @@
 
 <h1 align="center">   🚀 Projet: PATCH MANAGEMENT AVEC AWX ET ANSIBLE </h1>
 
-__🔄 Etant dans un monde technologique en constante évolution, ce projet reste ouvert à l'ajout de nouvelles fonctionnalités, en fonction de l'évolution  des besoins__
-
 ---
 
 ## Problématique
@@ -199,7 +197,11 @@ AWX Operator reposant sur Kubernetes, il est nécessaire de vérifier l'état du
 | Services | `kubectl get svc -n awx` | Vérifier l'exposition des services |
 | Stockage | `kubectl get pvc -n awx` | Vérifier les volumes persistants |
 
+---
 
+🔄 Dans un environnement technologique en constante évolution, ce projet reste ouvert à l'intégration de nouvelles fonctionnalités en fonction de l'évolution des besoins et des exigences techniques.
+
+---
 
 ## ✍️ AUTEUR
 - Nom : Ngandu Jean-Marc
