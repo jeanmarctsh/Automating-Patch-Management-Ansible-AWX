@@ -1,5 +1,5 @@
 
-<h1 align="center">   🚀 Projet: PATCH MANAGEMENT AVEC AWX ET ANSIBLE </h1>
+<h1 align="center"> Centralisation et automatisation du Patch Management avec AWX et Ansible </h1>
 
 ---
 
@@ -7,7 +7,7 @@
 
 Au sein d'une entreprise fortement exposée aux technologies, aux données sensibles et aux utilisateurs, la gestion d'un parc informatique  constitue un enjeu majeur pour assurer la disponibilité, la sécurité et la maîtrise des ressources IT. L'absence d'une vision globale de ces différents éléments constitue généralement un risque sécuritaire non négligeable pouvant à la longue ralentir ou compromettre le bon fonctionnement du système informatique. Afin de limiter ces risques, il est donc  nécessaire  de disposer d'une plateforme permettant de centraliser la gestion du parc, d'intégrer d'autres technologies pouvant rendre l'environnement  plus fluide, sécurisée et auditable.
 
-## 📝 BUT
+## 📝 But
 
 Déployer AWX grâce à AWX Operator afin de centraliser la gestion d'un environnement IT de manière fluide (exécution des différents playbooks Ansible via une interface graphique), sécurisée (gestion des clés SSH, RBAC et gestion des utilisateurs avec un annuaire LDAP), planifiée et surtout automatisée grâce aux mécanismes d'intégration et de synchronisation.
 
@@ -17,7 +17,7 @@ Déployer AWX grâce à AWX Operator afin de centraliser la gestion d'un environ
 awx est un projet open source qui permet de centraliser et d'orchestrer ansible. Il fournit une interface web et une API permettant de gérer les inventaires statiques ou dynamiques, les credentials, les projets, les playbooks, les templates de jobs et les workflows, ainsi que de planifier et suivre l'exécution des automatisations.
 
 
-## 🌟 WORKFLOW DU PROJET
+## 🌟 Workflow du projet
 
 Voici le workflow général de notre projet:
 
@@ -25,7 +25,7 @@ Voici le workflow général de notre projet:
 
 ---
 
-## STRUCTURE GENERALE DU PROJET 
+## Structure générale du projet 
 
 ```text
 VERSION_FINALE/                 
@@ -45,7 +45,7 @@ VERSION_FINALE/
 
 ```
 
-## 🌐🖧 ARCHITECTURE PHYSIQUE DU PROJET
+## 🌐🖧 Architecture physique du projet
 
 le projet comprend : 4 Serveurs Linux, 1 Serveur Windows et 2 machines clientes. 
 
@@ -73,13 +73,13 @@ le projet comprend : 4 Serveurs Linux, 1 Serveur Windows et 2 machines clientes.
 
 ---
 
-## INSTALLATION DE L'OUTIL
+## Installation de l'outil
 
 La documentation complète de l'installation et de la configuration d'AWX Operator est disponible ici :
 
 👉 [Consulter la documentation pour installer AWX Operator](https://github.com/jeanmarctsh/awx-operator-minikube/tree/awx/DAT)
 
-## ⚙️ MECANISME DE FONCTIONNEMENT DU PROJET
+## ⚙️ Mécanisme de fonctionnement du projet
 
 - Pour le serveur AWX : il sera le gestionnaire central de notre projet, synchronisé avec Gitea afin de récupérer automatiquement les différents fichiers de configuration. Et la mise à niveau  pourra se faire de manière contrôlée.
 
@@ -95,7 +95,7 @@ La documentation complète de l'installation et de la configuration d'AWX Operat
 
 ---
 
-## 🧰 OUTILS ET TECHNOLOGIES UTILISES
+## 🧰 Outils et technologies utilisés
 
 * Comme système d'exploitation nous avons utilisé :
 
@@ -125,7 +125,7 @@ La documentation complète de l'installation et de la configuration d'AWX Operat
     
 ---
 
-## DEMO
+## Demo
 
 Voici une démo de l'utilisation de l'outil en installant un paquet linux .deb depuis le serveur de référentiel local
 
@@ -139,13 +139,12 @@ Voici une démo de l'utilisation de l'outil en installant un paquet linux .deb d
 
 ---
 
-## LIMITES
+## Limites et points de vigilance
 
 Bien qu'AWX permette de centraliser et d'automatiser la gestion d'un parc informatique, son déploiement et son utilisation nécessitent la prise en compte de plusieurs contraintes de sécurité et d'exploitation.
 
 Voici quelques-uns des principaux points de vigilance :
 
-## Limites et points de vigilance
 
 | Limite | Description |
 |---|---|
@@ -160,7 +159,7 @@ Voici quelques-uns des principaux points de vigilance :
 
 __Note__
 
-## Limites
+
 
 Cette implémentation est centrée sur l'installation et la prise en main d'AWX Operator dans un environnement Minikube, notamment à travers la centralisation des tâches d'administration, l'exécution et l'automatisation des playbooks Ansible, la gestion des utilisateurs et des accès via LDAP/RBAC, ainsi que la synchronisation des projets et des inventaires. L'exploitation avancée, la haute disponibilité, la reprise après sinistre et le déploiement en production ne sont pas couverts dans cette version.
 
