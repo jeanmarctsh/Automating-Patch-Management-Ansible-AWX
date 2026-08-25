@@ -1,29 +1,23 @@
-# 🚀 Projet: PATCH MANAGEMENT AVEC AWX ET ANSIBLE
+
+<h1 align="center">   🚀 Projet: PATCH MANAGEMENT AVEC AWX ET ANSIBLE </h1>
 
 __🔄 Etant dans un monde technologique en constante évolution, ce projet reste ouvert à l'ajout de nouvelles fonctionnalités, en fonction de l'évolution  des besoins__
 
 ---
 
-## 📍 SOMMAIRE
+## Problématique
 
-- [🚀 Projet: PATCH MANAGEMENT AVEC AWX ET ANSIBLE](#-projet-patch-management-avec-awx-et-ansible)
-  - [📍 SOMMAIRE](#-sommaire)
-  - [📝 OBJECTIF](#-objectif)
-  - [🌟 WORKFLOW DU PROJET](#-workflow-du-projet)
-  - [STRUCTURE GENERALE DU PROJET](#structure-generale-du-projet)
-  - [🌐🖧 ARCHITECTURE PHYSIQUE DU PROJET](#-architecture-physique-du-projet)
-  - [⚙️ MECANISME DE FONCTIONNEMENT DU PROJET](#️-mecanisme-de-fonctionnement-du-projet)
-  - [🧰 OUTILS ET TECHNOLOGIES UTILISES](#-outils-et-technologies-utilises)
-  - [✍️ AUTEUR](#️-auteur)
+Au sein d'une entreprise fortement exposée aux technologies, aux données sensibles et aux utilisateurs, la gestion d'un parc informatique  constitue un enjeu majeur pour assurer la disponibilité, la sécurité et la maîtrise des ressources IT. L'absence d'une vision globale de ces différents éléments constitue généralement un risque sécuritaire non négligeable pouvant à la longue ralentir ou compromettre le bon fonctionnement du système informatique. Afin de limiter ces risques, il est donc  nécessaire  de disposer d'une plateforme permettant de centraliser la gestion du parc, d'intégrer d'autres technologies pouvant rendre l'environnement  plus fluide, sécurisée et auditable.
 
----
+## 📝 BUT
 
-## 📝 OBJECTIF
+Déployer AWX grâce à AWX Operator afin de centraliser la gestion d'un environnement IT de manière fluide (exécution des différents playbooks Ansible via une interface graphique), sécurisée (gestion des clés SSH, RBAC et gestion des utilisateurs avec un annuaire LDAP), planifiée et surtout automatisée grâce aux mécanismes d'intégration et de synchronisation.
 
-Ce projet consiste à mettre en place une solution de gestion centralisée basée sur Ansible et AWX. Cette solution permet d’avoir une vision globale de différents correctifs (paquets, images, etc.) et d’effectuer des mises à niveau de manière plus sécurisée, contrôlée et planifiée. 
-__Eléments clés : Sécurité (locale et utilisateur), l’automatisation, la synchronisation, le versioning et la planification.__
 
----
+## A propos de l'outil
+
+awx est un projet open source qui permet de centraliser et d'orchestrer ansible. Il fournit une interface web et une API permettant de gérer les inventaires statiques ou dynamiques, les credentials, les projets, les playbooks, les templates de jobs et les workflows, ainsi que de planifier et suivre l'exécution des automatisations.
+
 
 ## 🌟 WORKFLOW DU PROJET
 
@@ -81,6 +75,12 @@ le projet comprend : 4 Serveurs Linux, 1 Serveur Windows et 2 machines clientes.
 
 ---
 
+## INSTALLATION DE L'OUTIL
+
+La documentation complète de l'installation et de la configuration d'AWX Operator est disponible ici :
+
+👉 [Consulter la documentation pour installer AWX Operator](https://github.com/jeanmarctsh/awx-operator-minikube/tree/awx/DAT)
+
 ## ⚙️ MECANISME DE FONCTIONNEMENT DU PROJET
 
 - Pour le serveur AWX : il sera le gestionnaire central de notre projet, synchronisé avec Gitea afin de récupérer automatiquement les différents fichiers de configuration. Et la mise à niveau  pourra se faire de manière contrôlée.
@@ -126,6 +126,80 @@ le projet comprend : 4 Serveurs Linux, 1 Serveur Windows et 2 machines clientes.
   | 13 | Hyperviseur de type 2 (Vmware_workstation)                             | Construction et virtualisation de  l'architecture du projet |
     
 ---
+
+## DEMO
+
+Voici une démo de l'utilisation de l'outil en installant un paquet linux .deb depuis le serveur de référentiel local
+
+1. Installation du package curl
+
+👉 **[Voir la démonstration vidéo](Demo/install_curl_from_awx.mp4)**
+
+2. Désinstallation du package curl
+
+👉 **[Voir la démonstration vidéo](Demo/remove_curl_from_awx.mp4)**
+
+---
+
+## LIMITES
+
+Bien qu'AWX permette de centraliser et d'automatiser la gestion d'un parc informatique, son déploiement et son utilisation nécessitent la prise en compte de plusieurs contraintes de sécurité et d'exploitation.
+
+Voici quelques-uns des principaux points de vigilance :
+
+## Limites et points de vigilance
+
+| Limite | Description |
+|---|---|
+| Mises à jour | Les mises à jour d'AWX, de l'Operator et de Kubernetes nécessitent de vérifier la compatibilité entre les différentes versions. |
+| Centralisation des credentials | La centralisation des clés SSH et autres credentials augmente l'impact potentiel d'une compromission. |
+| Abstraction technique | L'interface AWX simplifie l'utilisation d'Ansible, mais peut masquer les mécanismes techniques exécutés en arrière-plan. |
+| Erreurs d'automatisation | Une erreur dans un playbook ou un workflow peut être propagée à plusieurs machines simultanément. |
+| Dépendance à Kubernetes | AWX Operator dépend du bon fonctionnement du cluster Kubernetes hébergeant AWX. |
+| Disponibilité | Une indisponibilité d'AWX peut empêcher l'exécution des automatisations centralisées. |
+| Montée en charge | Un nombre important de jobs simultanés peut nécessiter davantage de ressources CPU, RAM et stockage. |
+| Contrôle des accès | Une mauvaise configuration des rôles et permissions peut donner des privilèges excessifs aux utilisateurs. |
+
+__Note__
+
+## Limites
+
+Cette implémentation est centrée sur l'installation et la prise en main d'AWX Operator dans un environnement Minikube, notamment à travers la centralisation des tâches d'administration, l'exécution et l'automatisation des playbooks Ansible, la gestion des utilisateurs et des accès via LDAP/RBAC, ainsi que la synchronisation des projets et des inventaires. L'exploitation avancée, la haute disponibilité, la reprise après sinistre et le déploiement en production ne sont pas couverts dans cette version.
+
+---
+
+## Avantages
+
+Il existe certains avantages comme:
+
+| Avantage | Description |
+|---|---|
+| Autonomie | Permet de mieux comprendre et administrer l'environnement Ansible de manière autonome. |
+| Réflexes techniques et sécuritaires | Favorise le développement de réflexes d'administration, d'automatisation et de sécurité lors de la conception et de l'exploitation de l'environnement. |
+| Environnement d'apprentissage | Constitue un environnement pratique permettant de se familiariser avec les concepts d'Ansible Automation Platform (AAP). |
+| Centralisation | Centralise les inventaires, credentials, projets, playbooks et workflows Ansible. |
+| Automatisation | Permet de planifier et d'automatiser l'exécution des tâches d'administration. |
+| Traçabilité | Permet de suivre les exécutions et de conserver un historique des opérations réalisées. |
+
+---
+
+## Vérifications préalables
+
+AWX Operator reposant sur Kubernetes, il est nécessaire de vérifier l'état du cluster et de ses composants avant toute installation, modification ou opération de dépannage.
+
+| Élément à vérifier | Commande | Objectif |
+|---|---|---|
+| Nœuds Kubernetes | `kubectl get nodes` | Vérifier que les nœuds sont disponibles |
+| Pods | `kubectl get pods -A` | Vérifier l'état général des workloads |
+| Namespaces | `kubectl get namespaces` | Vérifier la présence des espaces nécessaires |
+| Operator | `kubectl get pods -n awx` | Vérifier l'état de l'AWX Operator |
+| Ressources AWX | `kubectl get awx -n awx` | Vérifier l'état de l'instance AWX |
+| Événements | `kubectl get events -n awx --sort-by=.lastTimestamp` | Identifier les erreurs récentes |
+| Logs Operator | `kubectl logs -n awx deployment/awx-operator-controller-manager` | Analyser les erreurs de l'Operator |
+| Services | `kubectl get svc -n awx` | Vérifier l'exposition des services |
+| Stockage | `kubectl get pvc -n awx` | Vérifier les volumes persistants |
+
+
 
 ## ✍️ AUTEUR
 - Nom : Ngandu Jean-Marc
