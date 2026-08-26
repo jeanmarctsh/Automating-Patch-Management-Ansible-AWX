@@ -30,8 +30,9 @@ Voici le workflow général de notre projet:
 ```text
 VERSION_FINALE/                 
 ├── Configuration/              
-|   ├── ansible/                # Configuration de différents playbooks
-|   ├── Awx_Kubernetes/        ├# Installation et configuration AWX-OPERATOR via minikube
+|   ├── ansible/                # Dossier global ansible (configuration et photos)
+|   |   └── devops/             # Dosier pour la Configuration des différents playbooks
+|   ├── Awx_Kubernetes/         # Installation et configuration AWX-OPERATOR via minikube
 |   ├── clients/                # Configuration de différentes machines clientes
 |   ├── Gitea_docker/           # Installation via docker-compose du serveur Gitea pour le versionning
 |   ├── Grafana_prometheus/     # Installation et supervision du parc local
@@ -124,6 +125,12 @@ La documentation complète de l'installation et de la configuration d'AWX Operat
   | 13 | Hyperviseur de type 2 (Vmware_workstation)                             | Construction et virtualisation de  l'architecture du projet |
     
 ---
+
+## Résultat
+
+Voici un apperçu du fonctionnement d'AWX
+
+![Interface AWX avec les projets et les inventaires](Configuration/Awx_Kubernetes/Interface_d'acceuil_AWX.PNG)
 
 ## Demo
 
