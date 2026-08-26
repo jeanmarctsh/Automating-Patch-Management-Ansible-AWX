@@ -1,0 +1,13 @@
+---
+- name: effectuter ping sur pc
+  hosts: all
+  gather_facts: true
+  become: true
+
+  tasks:
+    - name: ping connectivity 
+      ansible.builtin.ping:
+    
+    - name: print message
+      ansible.builtin.debug:
+        msg: ping effectué avec succès

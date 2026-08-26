@@ -1,0 +1,17 @@
+---
+- name: update
+  hosts: all
+  gather_facts: true
+  become: true
+
+  tasks:
+    - name: apt
+      ansible.builtin.apt:
+        update_cache: yes
+      
+    
+    - name: print msg 
+      ansible.builtin.debug:
+        msg: perfect you did it
+      
+      when: ansible_distribution == "Ubuntu" 

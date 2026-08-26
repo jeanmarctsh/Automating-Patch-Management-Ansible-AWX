@@ -1,0 +1,16 @@
+---
+- name: update
+  hosts: clients
+  gather_facts: true
+  become: true
+  
+  tasks:
+    - name: execute_apt
+      ansible.builtin.apt:
+      
+        update_cache: yes
+    
+    - name: full upgrade
+      ansible.builtin.apt:
+
+        upgrade: full

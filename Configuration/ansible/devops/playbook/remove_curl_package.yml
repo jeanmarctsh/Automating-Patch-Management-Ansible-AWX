@@ -1,0 +1,16 @@
+---
+- name: test with local repository
+  hosts: all
+  gather_facts: true
+  become: true
+
+  tasks:
+    - name: remove curl
+      ansible.builtin.apt:
+
+        name: curl
+        state: absent
+
+    - name: print message
+      debug:
+        msg: package removed correctly

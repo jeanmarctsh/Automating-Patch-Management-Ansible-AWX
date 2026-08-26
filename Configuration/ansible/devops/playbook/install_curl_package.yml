@@ -1,0 +1,20 @@
+---
+- name: install curl with local repository
+  hosts: all
+  gather_facts: true
+  become: true
+
+  tasks:
+
+    - name: refresh
+      apt:
+        update_cache: yes
+
+    - name: install curl
+      apt:
+        name: curl
+        state: present
+    
+    - name: print message
+      debug:
+        msg: curl install correctly
